@@ -11,9 +11,9 @@ PR="r0"
 
 ALLOW_EMPTY_${PN} = "1"
 
-SRC_URI = "git://github.com/Azure/azure-iot-sdk-c.git;protocol=https;branch=master;tag=${PV}"
+SRC_URI = "SRC_URI = "file://azure-iot-sdk-c.tar.gz"
 
-S = "${WORKDIR}/git"
+S = "${WORKDIR}/azure-iot-sdk-c/cmake"
 
 inherit cmake pkgconfig
 
@@ -33,8 +33,4 @@ EXTRA_OECMAKE = "\
 
 # gitsm fetcher does not work.
 # Workaround: Initialize git submodules before patch task.
-do_gitsubmodules() {
-    cd "${WORKDIR}/git"
-    git submodule update --init --recursive
-}
-addtask gitsubmodules after do_unpack before do_patch
+ 
